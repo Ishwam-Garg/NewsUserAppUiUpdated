@@ -25,7 +25,7 @@ class _BlogDataPageState extends State<BlogDataPage> {
   String uid = FirebaseDb().getuid().toString();
   var database;
   var scr = new GlobalKey();
-  double _fontsize = 14;
+  double _fontsize = 18;
 
   takescrshot() async {
     RenderRepaintBoundary boundary =
@@ -117,7 +117,7 @@ class _BlogDataPageState extends State<BlogDataPage> {
                       if(_fontsize>40)
                         {
                           setState(() {
-                            _fontsize = 14;
+                            _fontsize = 18;
                           });
                         }
                       else
@@ -141,10 +141,12 @@ class _BlogDataPageState extends State<BlogDataPage> {
               SizedBox(
                 height: 10,
               ),
-              Text(widget.ds['title'],style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(widget.ds['title'],style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),)),
               Container(
-                height: 100,
-                width: 400,
+                height: MediaQuery.of(context).size.height*0.4,
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
@@ -152,7 +154,9 @@ class _BlogDataPageState extends State<BlogDataPage> {
                   ),
                 ),
               ),
-              Text(widget.ds['description']),
+              SizedBox(height: 10,),
+              Text(widget.ds['description'],style: TextStyle(fontSize: _fontsize),),
+              SizedBox(height: 5,),
               Text(widget.ds['date'].toString()),
               // Text(widget.ds['category']),
             ],

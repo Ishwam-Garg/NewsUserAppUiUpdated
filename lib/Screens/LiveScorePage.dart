@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -408,7 +407,20 @@ class _LiveScorePageState extends State<LiveScorePage> {
             ),
           ));
     } else {
-      return Scaffold(body: Center(child: CircularProgressIndicator()));
+      return Scaffold(
+          backgroundColor: Theme.of(context).accentColor,
+          body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          Text('Please wait while we fetch data',style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),overflow: TextOverflow.clip,textAlign: TextAlign.center,),
+          SizedBox(height: 10,),
+            CircularProgressIndicator(
+            backgroundColor: Theme.of(context).accentColor,
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          ),
+        ],
+      )));
     }
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app_user/Database.dart';
 import 'package:news_app_user/Screens/BlogDataPage.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ChuruPage extends StatefulWidget {
   List id;
@@ -26,7 +27,73 @@ class _FashionPageState extends State<ChuruPage> {
             return Text(
               'No Data...',
             );
-          } else {
+          }
+          else if(snapshot.connectionState == ConnectionState.waiting)
+          {
+            return SingleChildScrollView(
+              child: Column(
+                children: List.generate(10, (index) => Container(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.grey.shade300,
+                    highlightColor: Colors.grey.shade100,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 5,),
+                        Container(
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 5,),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            height: 20,
+                            width: MediaQuery.of(context).size.width/2,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Container(
+                          height: MediaQuery.of(context).size.height*0.3,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 10,),
+                        Container(
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 5,),
+                        Container(
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 5,),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            height: 20,
+                            width: MediaQuery.of(context).size.width/2,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )),
+              ),
+            );
+          }
+          else {
             return ListView.builder(
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
@@ -67,7 +134,7 @@ class _FashionPageState extends State<ChuruPage> {
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 18,
+                                    fontSize: 22,
                                   ),
                                 ),
                               ),
@@ -97,7 +164,7 @@ class _FashionPageState extends State<ChuruPage> {
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
-                                      fontSize: 14),
+                                      fontSize: 18),
                                 ),
                               ),
                               SizedBox(

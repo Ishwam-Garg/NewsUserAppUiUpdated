@@ -329,7 +329,9 @@ class _CricketNewsState extends State<CricketNews> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Please wait we are fetching the data for you',style: TextStyle(fontSize: 16),),
+                Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text('Please wait we are fetching the data for you',overflow: TextOverflow.clip,textAlign: TextAlign.center,style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),)),
                 SizedBox(height: 10,),
                 CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),),
               ],

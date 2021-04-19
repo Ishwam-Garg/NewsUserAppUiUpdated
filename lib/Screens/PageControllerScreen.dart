@@ -63,8 +63,8 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
               iconTheme: IconThemeData(color: Colors.white),
               title: Text('जयपुर टाइम्स'),
               centerTitle: true,
-              actions: [
-                IconButton(
+              leading: Container(
+                child: IconButton(
                   icon: Icon(
                     Icons.logout,
                     color: Colors.white,
@@ -73,9 +73,11 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
                     await FirebaseDb().signout();
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(builder: (context) => PhoneAuth()),
-                        (Route<dynamic> route) => false);
+                            (Route<dynamic> route) => false);
                   },
                 ),
+              ),
+              actions: [
                 IconButton(
                   icon: Icon(
                     Icons.device_thermostat,

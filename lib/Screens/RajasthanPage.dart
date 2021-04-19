@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app_user/Database.dart';
 import 'package:news_app_user/Screens/BlogDataPage.dart';
+import 'package:shimmer/shimmer.dart';
 
 class RajasthanPage extends StatefulWidget {
   List id;
@@ -25,7 +26,73 @@ class _PoliticsPageState extends State<RajasthanPage> {
             return Text(
               'No Data...',
             );
-          } else {
+          }
+          else if(snapshot.connectionState == ConnectionState.waiting)
+          {
+            return SingleChildScrollView(
+              child: Column(
+                children: List.generate(10, (index) => Container(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.grey.shade300,
+                    highlightColor: Colors.grey.shade100,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 5,),
+                        Container(
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 5,),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            height: 20,
+                            width: MediaQuery.of(context).size.width/2,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Container(
+                          height: MediaQuery.of(context).size.height*0.3,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 10,),
+                        Container(
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 5,),
+                        Container(
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 5,),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            height: 20,
+                            width: MediaQuery.of(context).size.width/2,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )),
+              ),
+            );
+          }
+          else {
             return ListView.builder(
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
@@ -59,9 +126,20 @@ class _PoliticsPageState extends State<RajasthanPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: Text(
+                                  (ds['title']).toString(),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                              ),
+                              Container(
                                 width: double.infinity,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.3,
+                                height: MediaQuery.of(context).size.height * 0.3,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: CachedNetworkImageProvider(
@@ -73,26 +151,14 @@ class _PoliticsPageState extends State<RajasthanPage> {
                                 height: 5,
                               ),
                               Container(
-                                padding: EdgeInsets.only(left: 20, right: 20),
-                                child: Text(
-                                  (ds['title']).toString(),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(left: 20, right: 20),
+                                padding: EdgeInsets.only(left: 10, right: 10),
                                 child: Text(
                                   (ds['description']).toString(),
                                   maxLines: 5,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
-                                      fontSize: 14),
+                                      fontSize: 18),
                                 ),
                               ),
                               SizedBox(
@@ -108,6 +174,7 @@ class _PoliticsPageState extends State<RajasthanPage> {
                                       ds['category'],
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
+                                          fontSize: 16,
                                           color: Colors.black.withOpacity(0.4)),
                                     ),
                                     Text(ds['date'],
