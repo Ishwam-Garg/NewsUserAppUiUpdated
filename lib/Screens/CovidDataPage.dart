@@ -86,9 +86,21 @@ class _CovidDataPageState extends State<CovidDataPage> {
   @override
   Widget build(BuildContext context) {
     if (loading == false) {
-      return Center(child: CircularProgressIndicator());
+      return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please wait we are fetching the data for you',style: TextStyle(fontSize: 16),),
+              SizedBox(height: 10,),
+              CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),),
+            ],
+          ),
+        ),
+      );
     } else {
       return Scaffold(
+        backgroundColor: Colors.white70,
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           controller: _controller,

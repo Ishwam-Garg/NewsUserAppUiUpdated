@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:news_app_user/Screens/CovidDataPage.dart';
 import 'package:news_app_user/Screens/LiveScorePage.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 Future<List<Cricket>> fetchcricketnews(http.Client client) async {
   const _api_key = "a164ce2366msh9b1254f5dba4b42p12da44jsne2d09d2454e1";
@@ -99,6 +101,7 @@ class _CricketNewsState extends State<CricketNews> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).accentColor,
       body: FutureBuilder<List<Cricket>>(
         future: fetchcricketnews(http.Client()),
         builder: (context, snapshot) {
@@ -136,33 +139,40 @@ class _CricketNewsState extends State<CricketNews> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Container(
-                                      decoration: BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            width: 0.5,
-                                          ),
-                                        ),
-                                      ),
                                       child: Column(
                                         children: [
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Text(
-                                                snapshot
-                                                    .data![index].seriesname,
-                                                style: TextStyle(
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.blue),
+                                              Expanded(
+                                                child: Container(
+                                                  child: AutoSizeText(
+                                                    snapshot
+                                                        .data![index].seriesname,
+                                                    minFontSize: 12,
+                                                    maxFontSize: 18,
+                                                    style: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Colors.blue),
+                                                  ),
+                                                ),
                                               ),
-                                              Text(
-                                                snapshot.data![index].status,
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.green),
+                                              Container(
+                                                width: MediaQuery.of(context).size.width*0.4,
+                                                child: Align(
+                                                  alignment: Alignment.topRight,
+                                                  child: AutoSizeText(
+                                                    snapshot.data![index].status,
+                                                    maxFontSize: 18,
+                                                    minFontSize: 12,
+                                                    style: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Colors.green),
+                                                  ),
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -315,7 +325,16 @@ class _CricketNewsState extends State<CricketNews> {
                     );
                   },
                 )
-              : Center(child: CircularProgressIndicator());
+              : Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Please wait we are fetching the data for you',style: TextStyle(fontSize: 16),),
+                SizedBox(height: 10,),
+                CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),),
+              ],
+            )
+          );
         },
       ),
     );

@@ -44,38 +44,143 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     if (loading == true) {
       return Scaffold(
-        appBar: AppBar(title: Text('Weather Page')),
-        body: Column(
-          children: [
-            Text('latitude:' +
-                weather['coord']['lat'].toString() +
-                ' longitude: ' +
-                weather['coord']['lon'].toString()),
-            Text('description :' + weather['weather'][0]['description']),
-            Text('temperature :' + weather['main']['temp'].toString() + '°C'),
-            Text('feels_like : ' +
-                weather['main']['feels_like'].toString() +
-                '°C'),
-            Text('temperature_min :' +
-                weather['main']['temp_min'].toString() +
-                '°C'),
-            Text('temperature_max :' +
-                weather['main']['temp_max'].toString() +
-                '°C'),
-            Text(
-                'pressure :' + weather['main']['pressure'].toString() + ' hPa'),
-            Text('humidity :' + weather['main']['humidity'].toString() + '%'),
-            Text('visibility :' + weather['visibility'].toString()),
-            Text('wind_speed :' +
-                weather['wind']['speed'].toString() +
-                ' meter/sec'),
-            Text('country :' + weather['sys']['country']),
-            Text('sunrise :' +
-                getClockInUtcPlus5Hours(weather['sys']['sunrise'])),
-            Text(
-                'sunset :' + getClockInUtcPlus5Hours(weather['sys']['sunset'])),
-            Text('location (approx 1km) :' + weather['name']),
-          ],
+        backgroundColor: Colors.white,
+        appBar: AppBar(title: Text('मौसम पृष्ठ')),
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: AssetImage('assets/weatherforec.jpg'),fit: BoxFit.fill),
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'latitude: ',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['coord']['lat'].toString(),style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                      TextSpan(text: '\nlongitude: ',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['coord']['lon'].toString(),style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'Description: ',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['weather'][0]['description'],style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'temperature :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['main']['temp'].toString() + '°C',style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'feels_like : ',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['main']['feels_like'].toString() +
+                          '°C',style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'temperature_min :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['main']['temp_min'].toString() + '°C',style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'temperature_max :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['main']['temp_max'].toString() + '°C',style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'pressure :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['main']['pressure'].toString() + ' hPa',style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'humidity :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['main']['humidity'].toString() + '%',style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'visibility :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['visibility'].toString(),style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'wind_speed :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['wind']['speed'].toString() +
+                          ' meter/sec',style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'pressure :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['main']['pressure'].toString() + ' hPa',style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'sunrise :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: getClockInUtcPlus5Hours(weather['sys']['sunrise']),style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'sunset :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: getClockInUtcPlus5Hours(weather['sys']['sunset']),style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: 'location (approx 1km) :',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: 18)),
+                      TextSpan(text: weather['name'],style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold,fontSize: 22)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       );
     } else {

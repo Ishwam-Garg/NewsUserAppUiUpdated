@@ -61,7 +61,8 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
                 Size(MediaQuery.of(context).size.width.toDouble(), 80),
             child: AppBar(
               iconTheme: IconThemeData(color: Colors.white),
-              title: Text('ABC News'),
+              title: Text('जयपुर टाइम्स'),
+              centerTitle: true,
               actions: [
                 IconButton(
                   icon: Icon(
@@ -91,64 +92,65 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
               bottom: TabBar(
                 labelColor: Colors.white,
                 isScrollable: true,
+                labelStyle: TextStyle(fontSize: 18),
                 physics: ScrollPhysics(),
                 tabs: <Widget>[
                   Tab(
-                    text: 'Churu',
+                    text: 'चुरू',
                   ),
                   Tab(
                     child: Container(
-                      child: Text('Rajasthan'),
+                      child: Text('राजस्थान'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('Covid Data'),
+                      child: Text('कोविड डेटा'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('National'),
+                      child: Text('राष्ट्रीय'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('International '),
+                      child: Text('अंतरराष्ट्रीय'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('Sports'),
+                      child: Text('खेल'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('Entertainment'),
+                      child: Text('मनोरंजन'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('Business'),
+                      child: Text('व्यापार'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('Horoscope'),
+                      child: Text('राशिफल'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text("Today's Horoscope"),
+                      child: Text("आज का राशिफल"),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('Bookmarks'),
+                      child: Text('बुकमार्क'),
                     ),
                   ),
                   Tab(
                     child: Container(
-                      child: Text('Cricket Scores'),
+                      child: Text('क्रिकेट स्कोर'),
                     ),
                   ),
                 ],

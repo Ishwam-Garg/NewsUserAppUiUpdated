@@ -10,18 +10,18 @@ class HoroscopePage extends StatefulWidget {
 
 class _HoroscopePageState extends State<HoroscopePage> {
   List<String> months = [
-    'aquarius',
-    'pisces',
-    'aries',
-    'taurus',
-    'gemini',
-    'cancer',
-    'leo',
-    'virgo',
-    'libra',
-    'scorpio',
-    'sagittarius',
-    'capricorn'
+    'मेष',
+    'वृषभ',
+    'मिथुन',
+    'कर्क',
+    'सिंह',
+    'कन्या',
+    'तुला',
+    'वृश्चिक',
+    'धनुराशि',
+    'मकर',
+    'कुंभ',
+    'मीन',
   ];
   late String data;
   DateTime currentDate = DateTime.now();
@@ -43,9 +43,11 @@ class _HoroscopePageState extends State<HoroscopePage> {
                 child: Column(
               children: [
                 CircleAvatar(
+                  radius: 30,
                   backgroundImage: AssetImage('assets/${months[index]}.jpg'),
                 ),
-                Text(months[index])
+                SizedBox(height: 10,),
+                Text(months[index],style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),)
               ],
             )),
           );

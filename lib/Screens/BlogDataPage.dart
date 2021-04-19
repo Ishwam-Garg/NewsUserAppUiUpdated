@@ -25,6 +25,7 @@ class _BlogDataPageState extends State<BlogDataPage> {
   String uid = FirebaseDb().getuid().toString();
   var database;
   var scr = new GlobalKey();
+  double _fontsize = 14;
 
   takescrshot() async {
     RenderRepaintBoundary boundary =
@@ -56,7 +57,7 @@ class _BlogDataPageState extends State<BlogDataPage> {
     return RepaintBoundary(
       key: scr,
       child: Scaffold(
-        appBar: AppBar(title: Text('Display Blog Page'), actions: [
+        appBar: AppBar(title: Text('समाचार पृष्ठ'), actions: [
           IconButton(
               onPressed: () async {
                 if (widget.id.contains(widget.ds['title'])) {
@@ -104,13 +105,43 @@ class _BlogDataPageState extends State<BlogDataPage> {
         ]),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
-              SizedBox(
-                height: 20,
+              SizedBox(height: 10,),
+              Align(
+                alignment: Alignment.topRight,
+                child: GestureDetector(
+                    onTap: (){
+                      if(_fontsize>40)
+                        {
+                          setState(() {
+                            _fontsize = 14;
+                          });
+                        }
+                      else
+                        {
+                          setState(() {
+                            _fontsize = _fontsize + 4;
+                          });
+                        }
+                    },
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text('Set FontSize'),
+                          SizedBox(width: 5,),
+                          Icon(Icons.font_download_rounded,size: 34,),
+                        ],
+                      ),
+                    )),
               ),
-              SizedBox(height: 20),
-              Text(widget.ds['title']),
+              SizedBox(
+                height: 10,
+              ),
+              Text(widget.ds['title'],style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
               Container(
                 height: 100,
                 width: 400,

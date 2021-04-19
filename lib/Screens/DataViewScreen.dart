@@ -7,10 +7,13 @@ class DataViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Column(
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(data.title.toString()),
+          Text(data.title.toString(),style: TextStyle(fontSize: 18),),
           Container(
             child: CachedNetworkImage(
               imageUrl: data.urlToImage.toString(),
