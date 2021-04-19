@@ -60,6 +60,22 @@ class _FashionPageState extends State<ChuruPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: Text(
+                                  (ds['title']).toString(),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 10,right: 10),
                                 width: double.infinity,
                                 height:
                                     MediaQuery.of(context).size.height * 0.3,
@@ -74,19 +90,7 @@ class _FashionPageState extends State<ChuruPage> {
                                 height: 5,
                               ),
                               Container(
-                                padding: EdgeInsets.only(left: 20, right: 20),
-                                child: Text(
-                                  (ds['title']).toString(),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(left: 20, right: 20),
+                                padding: EdgeInsets.only(left: 10, right: 10),
                                 child: Text(
                                   (ds['description']).toString(),
                                   maxLines: 5,
@@ -100,7 +104,7 @@ class _FashionPageState extends State<ChuruPage> {
                                 height: 10,
                               ),
                               Padding(
-                                padding: EdgeInsets.only(left: 20, right: 20),
+                                padding: EdgeInsets.only(left: 10, right: 10),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
