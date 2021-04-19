@@ -60,10 +60,12 @@ class _State extends State<PhoneAuth> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => OTPScreen(_controller.text)));
               },
-              child: Center(
-                child: Text(
-                  'Next',
-                  style: TextStyle(color: Colors.white),
+              child: Container(
+                child: Center(
+                  child: Text(
+                    'Next',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ),

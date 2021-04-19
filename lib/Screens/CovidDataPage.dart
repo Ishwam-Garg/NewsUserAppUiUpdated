@@ -75,6 +75,8 @@ class _CovidDataPageState extends State<CovidDataPage> {
     }
   }
 
+  ScrollController _controller = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -89,12 +91,14 @@ class _CovidDataPageState extends State<CovidDataPage> {
       return Scaffold(
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
+          controller: _controller,
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: <Widget>[
               ClipPath(
                 clipper: MyClipper(),
                 child: Container(
-                  padding: EdgeInsets.only(left: 40,top: 50,right: 20),
+                  padding: EdgeInsets.only(left: 40,top: 20,right: 20),
                   height: 350,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -111,61 +115,16 @@ class _CovidDataPageState extends State<CovidDataPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: PopupMenuButton(
-                          itemBuilder: (BuildContext context){
-                            return <PopupMenuEntry>[
-                              PopupMenuItem(
-                                  value: 0,
-                                  child: Row(children: [
-                                    Icon(Icons.person,color: Colors.black,),
-                                    Text("Account"),
-                                  ],)),
-
-                              PopupMenuItem(
-                                  value: 1,
-                                  child: Row(children: [
-                                    Icon(Icons.help,color: Colors.black),
-                                    Text("Help"),
-                                  ],)),
-
-                              PopupMenuItem(
-                                  value: 2,
-                                  child: Row(children: [
-                                    Icon(Icons.info,color: Colors.black),
-                                    Text("About"),
-                                  ],)
-                              ),
-
-                              PopupMenuItem(
-                                  value: 3,
-                                  child: Row(children: [
-                                    Icon(Icons.settings,color: Colors.black),
-                                    Text("Settings"),
-                                  ],)),
-                            ];
-                          },
-                          onSelected: (value){},
-                          child: SvgPicture.asset("assets/menu.svg"),
-                        ),
-                        /*
-                      GestureDetector(
-                        onTap: (){
-
-                        },
-                        child: SvgPicture.asset("assets/icons/menu.svg"),
-                      ),
-                      */
-                      ),
-                      SizedBox(height: 20,),
                       Expanded(
                           child: Stack(
                             children: <Widget>[
-                              SvgPicture.asset("assets/Drcorona.svg",
-                                width: 230,
-                                fit: BoxFit.fitWidth,
-                                alignment: Alignment.topRight,
+                              Positioned(
+                                top: 30,
+                                child: SvgPicture.asset("assets/Drcorona.svg",
+                                  width: 230,
+                                  fit: BoxFit.fitWidth,
+                                  alignment: Alignment.topRight,
+                                ),
                               ),
                               Positioned(
                                 top: 20,
@@ -179,7 +138,7 @@ class _CovidDataPageState extends State<CovidDataPage> {
                   ),
                 ),
               ),
-              Text('Country wise data'),
+              Text('Country wise data',style: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 22,fontWeight: FontWeight.bold),),
               SizedBox(
                 height: 10,
               ),
@@ -296,15 +255,15 @@ class _CovidDataPageState extends State<CovidDataPage> {
                   ],
                 ),
               ),
-              Text('State wise data'),
+              Text('State wise data',style: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 22,fontWeight: FontWeight.bold)),
               SizedBox(
                 height: 10,
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 20),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                padding: EdgeInsets.only(left: 20,top: 10,bottom: 10),
+                //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 height: 60,
-                width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(25),
@@ -312,79 +271,73 @@ class _CovidDataPageState extends State<CovidDataPage> {
                     color: Color(0xFFE5E5E5),
                   ),
                 ),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: DropdownButton<String>(
-                        value: 'Andaman and Nicobar Islands',
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 20,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        underline: Container(
-                          height: 2,
-                          color: Colors.white,
-                        ),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            statecat = newValue!;
-                            statenumber = states.indexOf(newValue);
-                          });
-                          print(statenumber);
-                        },
-                        items: <String>[
-                          "Andaman and Nicobar Islands",
-                          "Andhra Pradesh",
-                          "Arunachal Pradesh ",
-                          "Assam",
-                          "Bihar",
-                          "Chandigarh",
-                          "Chhattisgarh",
-                          "Dadra and Nagar Haveli and Daman and Diu",
-                          "Delhi",
-                          "Goa",
-                          "Gujarat",
-                          "Haryana",
-                          "Himachal Pradesh",
-                          "Jammu and Kashmir",
-                          "Jharkhand",
-                          "Karnataka",
-                          "Kerala",
-                          "Ladakh",
-                          "Lakshadweep",
-                          "Madhya Pradesh",
-                          "Maharashtra",
-                          "Manipur",
-                          "Meghalaya",
-                          "Mizoram",
-                          "Nagaland",
-                          "Odisha",
-                          "Puducherry",
-                          "Punjab",
-                          "Rajasthan",
-                          "Sikkim",
-                          "Tamil Nadu",
-                          "Telangana",
-                          "Tripura",
-                          "Uttarakhand",
-                          "Uttar Pradesh",
-                          "West Bengal",
-                        ].map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        hint: Text(
-                          "Andaman and Nicobar Islands",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
-                  ],
+                child: DropdownButton<String>(
+                  value: 'Andaman and Nicobar Islands',
+                  icon: const Icon(Icons.arrow_downward),
+                  iconSize: 20,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.black),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.white,
+                  ),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      statecat = newValue!;
+                      statenumber = states.indexOf(newValue);
+                    });
+                    print(statenumber);
+                  },
+                  items: <String>[
+                    "Andaman and Nicobar Islands",
+                    "Andhra Pradesh",
+                    "Arunachal Pradesh ",
+                    "Assam",
+                    "Bihar",
+                    "Chandigarh",
+                    "Chhattisgarh",
+                    "Dadra and Nagar Haveli and Daman and Diu",
+                    "Delhi",
+                    "Goa",
+                    "Gujarat",
+                    "Haryana",
+                    "Himachal Pradesh",
+                    "Jammu and Kashmir",
+                    "Jharkhand",
+                    "Karnataka",
+                    "Kerala",
+                    "Ladakh",
+                    "Lakshadweep",
+                    "Madhya Pradesh",
+                    "Maharashtra",
+                    "Manipur",
+                    "Meghalaya",
+                    "Mizoram",
+                    "Nagaland",
+                    "Odisha",
+                    "Puducherry",
+                    "Punjab",
+                    "Rajasthan",
+                    "Sikkim",
+                    "Tamil Nadu",
+                    "Telangana",
+                    "Tripura",
+                    "Uttarakhand",
+                    "Uttar Pradesh",
+                    "West Bengal",
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  hint: Text(
+                    "Andaman and Nicobar Islands",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
               ),
               SizedBox(height: 20),
