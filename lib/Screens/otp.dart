@@ -35,11 +35,15 @@ class _OTPScreenState extends State<OTPScreen> {
           Container(
             margin: EdgeInsets.only(top: 40),
             child: Center(
-              child: Text(
-                'Verify ${widget.phone}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(text: 'Verifying: ',style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500,color: Colors.black.withOpacity(0.6))),
+                    TextSpan(text: '+91 '+ widget.phone.toString(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black.withOpacity(0.8))),
+                  ]
+                ),
               ),
-            ),
+            )
           ),
           Padding(
             padding: const EdgeInsets.all(30.0),
@@ -76,7 +80,7 @@ class _OTPScreenState extends State<OTPScreen> {
               },
             ),
           ),
-          Text('*Please wait for 10 sec'),
+          Text('*Please be patient while we process your request*'),
         ],
       ),
     );
