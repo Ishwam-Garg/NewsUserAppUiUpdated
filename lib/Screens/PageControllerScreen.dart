@@ -77,7 +77,7 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
                 ),
                 IconButton(
                   icon: Icon(
-                    Icons.thermostat,
+                    Icons.device_thermostat,
                     color: Colors.white,
                   ),
                   onPressed: () async {

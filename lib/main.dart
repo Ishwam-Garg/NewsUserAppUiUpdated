@@ -11,10 +11,12 @@ void main() async {
   await Firebase.initializeApp();
   if (FirebaseAuth.instance.currentUser?.uid == null) {
     runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: PhoneAuth(),
     ));
   } else {
     runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: PageControllerScreen(),
     ));
   }

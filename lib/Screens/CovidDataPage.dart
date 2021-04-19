@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:flutter_svg/svg.dart';
 class CovidDataPage extends StatefulWidget {
   @override
   _CovidDataPageState createState() => _CovidDataPageState();
@@ -91,6 +91,94 @@ class _CovidDataPageState extends State<CovidDataPage> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: <Widget>[
+              ClipPath(
+                clipper: MyClipper(),
+                child: Container(
+                  padding: EdgeInsets.only(left: 40,top: 50,right: 20),
+                  height: 350,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topRight,
+                          colors: [
+                          Color(0xFF3383CD),
+                          Color(0xFF11249F),
+                          ]
+                      ),
+                      image: DecorationImage(
+                          image: AssetImage("assets/virus.png"))
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: PopupMenuButton(
+                          itemBuilder: (BuildContext context){
+                            return <PopupMenuEntry>[
+                              PopupMenuItem(
+                                  value: 0,
+                                  child: Row(children: [
+                                    Icon(Icons.person,color: Colors.black,),
+                                    Text("Account"),
+                                  ],)),
+
+                              PopupMenuItem(
+                                  value: 1,
+                                  child: Row(children: [
+                                    Icon(Icons.help,color: Colors.black),
+                                    Text("Help"),
+                                  ],)),
+
+                              PopupMenuItem(
+                                  value: 2,
+                                  child: Row(children: [
+                                    Icon(Icons.info,color: Colors.black),
+                                    Text("About"),
+                                  ],)
+                              ),
+
+                              PopupMenuItem(
+                                  value: 3,
+                                  child: Row(children: [
+                                    Icon(Icons.settings,color: Colors.black),
+                                    Text("Settings"),
+                                  ],)),
+                            ];
+                          },
+                          onSelected: (value){},
+                          child: SvgPicture.asset("assets/menu.svg"),
+                        ),
+                        /*
+                      GestureDetector(
+                        onTap: (){
+
+                        },
+                        child: SvgPicture.asset("assets/icons/menu.svg"),
+                      ),
+                      */
+                      ),
+                      SizedBox(height: 20,),
+                      Expanded(
+                          child: Stack(
+                            children: <Widget>[
+                              SvgPicture.asset("assets/Drcorona.svg",
+                                width: 230,
+                                fit: BoxFit.fitWidth,
+                                alignment: Alignment.topRight,
+                              ),
+                              Positioned(
+                                top: 20,
+                                left: 150,
+                                child: Text("All you need \nis stay at home.",style: TextStyle(color: Colors.white,fontSize: 18),),
+                              ),
+                              Container(),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
+              ),
               Text('Country wise data'),
               SizedBox(
                 height: 10,
@@ -421,4 +509,22 @@ class Counter extends StatelessWidget {
       ],
     );
   }
+}
+
+class MyClipper extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0,size.height-80);
+    path.quadraticBezierTo(size.width/2, size.height, size.width, size.height-80);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+
 }
