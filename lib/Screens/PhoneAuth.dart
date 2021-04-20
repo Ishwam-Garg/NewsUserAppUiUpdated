@@ -47,7 +47,12 @@ class _State extends State<PhoneAuth> {
               ),
             )
           ]),
-          Container(
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => OTPScreen(_controller.text)));
+            },
+            child: Container(
             margin: EdgeInsets.all(10),
             width: double.infinity,
             padding: EdgeInsets.symmetric(vertical: 20),
@@ -55,12 +60,7 @@ class _State extends State<PhoneAuth> {
               color: Theme.of(context).accentColor,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => OTPScreen(_controller.text)));
-              },
-              child: Container(
+            child: Container(
                 child: Center(
                   child: Text(
                     'Next',
@@ -69,7 +69,7 @@ class _State extends State<PhoneAuth> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
