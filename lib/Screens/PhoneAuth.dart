@@ -32,6 +32,7 @@ class _State extends State<PhoneAuth> {
             ),
             Container(
               margin: EdgeInsets.only(top: 40, right: 10, left: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Phone Number',

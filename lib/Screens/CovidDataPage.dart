@@ -93,14 +93,13 @@ class _CovidDataPageState extends State<CovidDataPage> {
             children: [
               Text('Please wait we are fetching the data for you',style: TextStyle(fontSize: 16),),
               SizedBox(height: 10,),
-              CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),),
+              CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),),
             ],
           ),
         ),
       );
     } else {
       return Scaffold(
-        backgroundColor: Colors.white70,
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           controller: _controller,
@@ -150,7 +149,7 @@ class _CovidDataPageState extends State<CovidDataPage> {
                   ),
                 ),
               ),
-              Text('Country wise data',style: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 22,fontWeight: FontWeight.bold),),
+              Text('Country wise data',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
               SizedBox(
                 height: 10,
               ),
@@ -267,7 +266,7 @@ class _CovidDataPageState extends State<CovidDataPage> {
                   ],
                 ),
               ),
-              Text('State wise data',style: TextStyle(color: Colors.black.withOpacity(0.7),fontSize: 22,fontWeight: FontWeight.bold)),
+              Text('State wise data',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
               SizedBox(
                 height: 10,
               ),

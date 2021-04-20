@@ -101,7 +101,7 @@ class _CricketNewsState extends State<CricketNews> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).accentColor.withOpacity(0.5),
       body: FutureBuilder<List<Cricket>>(
         future: fetchcricketnews(http.Client()),
         builder: (context, snapshot) {
@@ -331,9 +331,11 @@ class _CricketNewsState extends State<CricketNews> {
               children: [
                 Container(
                     padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Text('Please wait we are fetching the data for you',overflow: TextOverflow.clip,textAlign: TextAlign.center,style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),)),
+                    child: Text('Please wait we are fetching the data for you',
+                      overflow: TextOverflow.clip,textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),)),
                 SizedBox(height: 10,),
-                CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),),
+                CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),),
               ],
             )
           );

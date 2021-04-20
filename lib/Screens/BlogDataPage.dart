@@ -58,6 +58,25 @@ class _BlogDataPageState extends State<BlogDataPage> {
       key: scr,
       child: Scaffold(
         appBar: AppBar(title: Text('समाचार पृष्ठ'), actions: [
+          GestureDetector(
+              onTap: (){
+                if(_fontsize>40)
+                {
+                  setState(() {
+                    _fontsize = 18;
+                  });
+                }
+                else
+                {
+                  setState(() {
+                    _fontsize = _fontsize + 4;
+                  });
+                }
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Icon(Icons.font_download_rounded),
+              )),
           IconButton(
               onPressed: () async {
                 if (widget.id.contains(widget.ds['title'])) {
@@ -111,37 +130,6 @@ class _BlogDataPageState extends State<BlogDataPage> {
             children: [
               SizedBox(height: 10,),
               Align(
-                alignment: Alignment.topRight,
-                child: GestureDetector(
-                    onTap: (){
-                      if(_fontsize>40)
-                        {
-                          setState(() {
-                            _fontsize = 18;
-                          });
-                        }
-                      else
-                        {
-                          setState(() {
-                            _fontsize = _fontsize + 4;
-                          });
-                        }
-                    },
-                    child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text('Set FontSize'),
-                          SizedBox(width: 5,),
-                          Icon(Icons.font_download_rounded,size: 34,),
-                        ],
-                      ),
-                    )),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Align(
                   alignment: Alignment.centerLeft,
                   child: Text(widget.ds['title'],style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),)),
               Container(
@@ -155,7 +143,9 @@ class _BlogDataPageState extends State<BlogDataPage> {
                 ),
               ),
               SizedBox(height: 10,),
-              Text(widget.ds['description'],style: TextStyle(fontSize: _fontsize),),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(widget.ds['description'],style: TextStyle(fontSize: _fontsize,color: Theme.of(context).textTheme.caption!.color),)),
               SizedBox(height: 5,),
               Text(widget.ds['date'].toString()),
               // Text(widget.ds['category']),

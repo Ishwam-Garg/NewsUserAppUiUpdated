@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -87,22 +88,32 @@ class _LiveScorePageState extends State<LiveScorePage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        data['meta']['series']['name']
-                                            .toString(),
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.blue),
+                                      Container(
+                                        width: 150,
+                                        child: AutoSizeText(
+                                          data['meta']['series']['name']
+                                              .toString(),
+                                          maxFontSize: 18,
+                                          minFontSize: 14,
+                                          style: TextStyle(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.blue),
+                                        ),
                                       ),
-                                      Text(
-                                        data['matchDetail']['matchSummary']
-                                                ['status']
-                                            .toString(),
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green),
+                                      Container(
+                                        width: 100,
+                                        child: AutoSizeText(
+                                          data['matchDetail']['matchSummary']
+                                                  ['status']
+                                              .toString(),
+                                          maxFontSize: 18,
+                                          minFontSize: 14,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.green),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -124,31 +135,13 @@ class _LiveScorePageState extends State<LiveScorePage> {
                                                 child: Row(
                                               children: [
                                                 Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.2,
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.2,
-                                                  child: Image.network(data[
-                                                                  'matchDetail']
-                                                              ['matchSummary'][
-                                                          'homeTeam']['logoUrl']
-                                                      .toString()),
+                                                  width: MediaQuery.of(context).size.width * 0.2,
+                                                  height: MediaQuery.of(context).size.width * 0.2,
                                                   decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: NetworkImage(data[
-                                                                          'matchDetail']
-                                                                      [
-                                                                      'matchSummary']
-                                                                  ['homeTeam'][
-                                                              'backgroundImageUrl']
-                                                          .toString()),
-                                                      fit: BoxFit.cover,
-                                                    ),
+                                                    borderRadius: BorderRadius.circular(20),
+                                                    image: DecorationImage(image: NetworkImage(data['matchDetail']['matchSummary']['homeTeam']['logoUrl'].toString()),fit: BoxFit.contain),
                                                   ),
+                                                  //child: Image.network(data['matchDetail']['matchSummary']['homeTeam']['logoUrl'].toString(),fit: BoxFit.fill,),
                                                 ),
                                                 SizedBox(
                                                   width: 10,
@@ -198,34 +191,30 @@ class _LiveScorePageState extends State<LiveScorePage> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
                                               children: [
-                                                Column(
-                                                  children: [
-                                                    Row(
-                                                      children: [
-                                                        Text(data['matchDetail']
-                                                                        [
-                                                                        'matchSummary']
-                                                                    ['scores']
-                                                                ['awayScore']
-                                                            .toString()), //wickets
-                                                      ],
-                                                    ),
-                                                    Text(
-                                                        '(${data['matchDetail']['matchSummary']['scores']['awayOvers'].toString()})'), //overs
-                                                  ],
+                                                Container(
+                                                  child: Column(
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Text(data['matchDetail']
+                                                                          [
+                                                                          'matchSummary']
+                                                                      ['scores']
+                                                                  ['awayScore']
+                                                              .toString()), //wickets
+                                                        ],
+                                                      ),
+                                                      Text(
+                                                          '(${data['matchDetail']['matchSummary']['scores']['awayOvers'].toString()})'), //overs
+                                                    ],
+                                                  ),
                                                 ),
                                                 SizedBox(
                                                   width: 10,
                                                 ),
                                                 Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.2,
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.2,
+                                                  width: MediaQuery.of(context).size.width * 0.2,
+                                                  height: MediaQuery.of(context).size.width * 0.2,
                                                   child: CachedNetworkImage(
                                                     imageUrl: data['matchDetail']
                                                                 ['matchSummary']
