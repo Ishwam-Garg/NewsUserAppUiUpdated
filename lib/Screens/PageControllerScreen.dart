@@ -68,7 +68,7 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
         builder: (context, ThemeNotifier notifier, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: notifier.darkTheme ? dark : light,
+            theme: notifier.darkTheme ? light : dark,
             home: DefaultTabController(
               length: 12,
               child: Scaffold(
@@ -155,7 +155,7 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
                                         children: [
                                           Icon(notifier.darkTheme ? EvaIcons.moonOutline : EvaIcons.sunOutline),
                                           SizedBox(width: 10,),
-                                          Text(notifier.darkTheme ? 'Dark Mode': 'Light Mode'),
+                                          Text(notifier.darkTheme ? 'Light Mode':'Dark Mode' ),
                                         ],
                                       ),
                                     ),

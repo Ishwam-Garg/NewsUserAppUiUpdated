@@ -14,6 +14,8 @@ ThemeData light = ThemeData(
   textTheme: TextTheme(
     headline6: TextStyle(color: Colors.black),
     caption: TextStyle(color: Colors.white54),
+    subtitle1: TextStyle(color: Colors.black.withOpacity(0.8)),
+    subtitle2: TextStyle(color: Colors.black.withOpacity(0.6)),
   ),
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
@@ -57,6 +59,8 @@ ThemeData dark = ThemeData(
   textTheme: TextTheme(
     headline6: TextStyle(color: Colors.white),
     caption: TextStyle(color: Colors.white54),
+    subtitle1: TextStyle(color: Colors.black.withOpacity(0.8)),
+    subtitle2: TextStyle(color: Colors.black.withOpacity(0.6)),
   ),
   appBarTheme: AppBarTheme(
     textTheme: TextTheme(

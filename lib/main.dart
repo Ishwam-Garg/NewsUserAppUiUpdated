@@ -21,7 +21,6 @@ void main() async {
   } else {
     runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeNotifier().darkTheme ? dark : light,
       home: PageControllerScreen(),
     ));
   }

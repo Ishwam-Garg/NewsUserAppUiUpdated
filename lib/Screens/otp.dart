@@ -37,9 +37,10 @@ class _OTPScreenState extends State<OTPScreen> {
             child: Center(
               child: RichText(
                 text: TextSpan(
+                  style: TextStyle(color: Theme.of(context).textTheme.subtitle1!.color),
                   children: [
-                    TextSpan(text: 'Verifying: ',style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500,color: Colors.black.withOpacity(0.6))),
-                    TextSpan(text: '+91 '+ widget.phone.toString(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black.withOpacity(0.8))),
+                    TextSpan(text: 'Verifying: ',style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500)),
+                    TextSpan(text: '+91 '+ widget.phone.toString(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
                   ]
                 ),
               ),
