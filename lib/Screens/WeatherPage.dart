@@ -7,8 +7,7 @@ import 'package:http/http.dart' as http;
 
 class WeatherPage extends StatefulWidget {
   Position position;
-  ThemeData pagetheme;
-  WeatherPage(this.position,this.pagetheme);
+  WeatherPage(this.position);
   @override
   _WeatherPageState createState() => _WeatherPageState();
 }

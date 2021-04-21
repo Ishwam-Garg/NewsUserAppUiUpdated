@@ -182,13 +182,13 @@ class _FashionPageState extends State<ChuruPage> {
                                           ds['category'],
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              color: Theme.of(context).textTheme.caption!.color),
-                                        ),
+                                              fontSize: 16,
+                                              color: Colors.grey),),
                                         Text(ds['date'],
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Theme.of(context).textTheme.caption!.color),
-                                            ),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -209,11 +209,13 @@ class _FashionPageState extends State<ChuruPage> {
                                     BlogDataPage(ds, widget.id)));
                       },
                       child: Material(
-                        elevation: 10,
+                        elevation: 2,
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 100,
-                          margin: EdgeInsets.only(top: 10),
+                          height: 120,
+                          color: Theme.of(context).backgroundColor.withOpacity(0.1),
+                          margin: EdgeInsets.only(top: 20),
+                          padding: EdgeInsets.symmetric(vertical: 10),
                           child: Row(
                             children: [
                               Container(

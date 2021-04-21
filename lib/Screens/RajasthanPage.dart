@@ -167,7 +167,7 @@ class _PoliticsPageState extends State<RajasthanPage> {
                                     height: 10,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 20, right: 20),
+                                    padding: EdgeInsets.only(left: 10, right: 10),
                                     child: Row(
                                       mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -177,11 +177,11 @@ class _PoliticsPageState extends State<RajasthanPage> {
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 16,
-                                              color: Theme.of(context).textTheme.caption!.color),),
+                                              color: Colors.grey),),
                                         Text(ds['date'],
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                color: Theme.of(context).textTheme.caption!.color),
+                                                color: Colors.grey),
                                         ),
                                       ],
                                     ),
@@ -203,11 +203,13 @@ class _PoliticsPageState extends State<RajasthanPage> {
                                     BlogDataPage(ds, widget.id)));
                       },
                       child: Material(
-                        elevation: 10,
+                        elevation: 2,
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 100,
-                          margin: EdgeInsets.only(top: 10),
+                          height: 120,
+                          color: Theme.of(context).backgroundColor.withOpacity(0.1),
+                          margin: EdgeInsets.only(top: 20),
+                          padding: EdgeInsets.symmetric(vertical: 10),
                           child: Row(
                             children: [
                               Container(

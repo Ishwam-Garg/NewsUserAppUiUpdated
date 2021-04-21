@@ -220,7 +220,7 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
 //about
                           GestureDetector(
                             onTap: () {
-//Navigator.push(context, CupertinoPageRoute(builder: (context)=>AboutPage()));
+                                //Navigator.push(context, CupertinoPageRoute(builder: (context)=>AboutPage()));
                             },
                             child: Container(
                               margin: EdgeInsets.only(top: 10,bottom: 10),
@@ -330,10 +330,8 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
                     preferredSize:
                     Size(MediaQuery.of(context).size.width.toDouble(), 80),
                     child: AppBar(
-                      iconTheme: IconThemeData(color: Colors.white),
                       title: Text('जयपुर टाइम्स'),
                       centerTitle: true,
-                      leading: Container(),
                       actions: [
                         /*
                         Container(
@@ -352,11 +350,11 @@ class _PageControllerScreenState extends State<PageControllerScreen> {
                         ),
                          */
                         GestureDetector(
-                          onTap: ()async{
+                          onTap: () async{
                             Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) => WeatherPage(position,Theme.of(context))));
+                                    builder: (context) => WeatherPage(position)));
                           },
                           child: WeatherIcon('Sunny'),
                         ),

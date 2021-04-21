@@ -10,10 +10,10 @@ class CovidDataPage extends StatefulWidget {
 }
 
 class _CovidDataPageState extends State<CovidDataPage> {
-  late String countrycat;
+  String countrycat = " ";
   var data;
   bool loading = false;
-  late String statecat;
+  String statecat = " ";
   var statedata;
   int statenumber = 0;
   List<String> states = [
@@ -169,7 +169,7 @@ class _CovidDataPageState extends State<CovidDataPage> {
                   children: <Widget>[
                     Expanded(
                       child: DropdownButton<String>(
-                        value: 'Worldwide',
+                        hint: countrycat == " " ? Text('Please select') : Text(countrycat),
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
@@ -207,13 +207,6 @@ class _CovidDataPageState extends State<CovidDataPage> {
                             child: Text(value),
                           );
                         }).toList(),
-                        hint: Text(
-                          "Worldwide",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
-                        ),
                       ),
                     ),
                   ],
@@ -283,7 +276,7 @@ class _CovidDataPageState extends State<CovidDataPage> {
                   ),
                 ),
                 child: DropdownButton<String>(
-                  value: 'Andaman and Nicobar Islands',
+                  hint: statecat == " " ? Text('Please select') : Text(statecat),
                   icon: const Icon(Icons.arrow_downward),
                   iconSize: 20,
                   elevation: 16,
@@ -342,13 +335,6 @@ class _CovidDataPageState extends State<CovidDataPage> {
                       child: Text(value),
                     );
                   }).toList(),
-                  hint: Text(
-                    "Andaman and Nicobar Islands",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
-                  ),
                 ),
               ),
               SizedBox(height: 20),

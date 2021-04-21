@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 ThemeData light = ThemeData(
+  iconTheme: IconThemeData(
+    color: Colors.black,
+  ),
   scaffoldBackgroundColor: Colors.white,
   tabBarTheme: TabBarTheme(
     labelColor: Colors.black,
@@ -42,6 +45,9 @@ ThemeData light = ThemeData(
 );
 
 ThemeData dark = ThemeData(
+  iconTheme: IconThemeData(
+  color: Colors.white,
+  ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: Constants.primary_dark,
     selectedItemColor: Colors.white,
